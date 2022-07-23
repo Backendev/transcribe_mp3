@@ -1,4 +1,5 @@
 import os,random,jwt
+import traceback
 from singleton import Singleton
 
 class TokenGen(metaclass=Singleton):
@@ -16,3 +17,14 @@ class TokenGen(metaclass=Singleton):
 
     def get_token(self):
         return self.token
+
+    def get_desc_token(self,token):
+        token_decode = None
+        for i in self.secret:
+            try:
+                token_decode = jwt.decode(token,i,algorithms=['HS256'])
+            except:
+                pass
+            if token_decode != None:
+                return token_decode      
+        return False
