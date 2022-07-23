@@ -2,14 +2,14 @@ from flask import Flask, request
 from generate_token import TokenGen
 from data import Data
 from data_aux import DataAux
-import json 
+import json,os
 from functools import wraps
-
+from utils import Utils
 
 tg = TokenGen()
 d = Data()
 da = DataAux()
-
+ut = Utils()
 app = Flask(__name__)
 
 _port = 5000
@@ -108,6 +108,16 @@ def crypto():
 def verify(user):
     user = d.get_user_id(user)
     return generate_response("Yes",200)
+
+
+@app.route('/transcode',methods=['POST'])
+def transcode():
+    request_data = request.args.to_dict()
+    
+    route = request_data['route']
+    ut.read_mp3(route)
+    return generate_response("Yes",200)
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=_port)
