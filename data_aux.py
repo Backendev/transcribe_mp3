@@ -63,27 +63,6 @@ class DataAux():
         return self.validate_result(result,text)
 
 
-    def validate_params(self,request_data,dict_params):
-        dict_types = {
-            "text":self.validate_text,
-            "number":self.validate_number,
-            "week":self.validate_week,
-            "date":self.validate_date}
-        errors_types = {
-            "text":"No debe estar vacio;  Debe comenzar con una letra y solo puede contener los siguientes caracteres numeros o -_*+@.",
-            "number":"Debe ser un valor numerico",
-            "week":"debe tener el siguiente formato [YYYY-W(numerico 1 o 2)] ejemplo 2020-W7",
-            "date":"puede tener los siguientes formatos [YYYY-MM|M-DD|D] 2020-2-3 o 2020-02-03 [YYYY MM|M DD|D] 2020 02 03 o 2020 2 3 [YYYY/MM|M/DD|D] 2020/02/03 o 2020/2/3 [MM|M-DD|D-YYYY] 3-2-2020 o 03-02-2020 [MM|M DD|D YYYY] 03 02 2020 o 3 2 2020 [MM|M/DD|D/YYYY] 03/02/2020 o 3/2/2020"}
-        list_results = {}
-        errors = []
-        for k,v in dict_params.items():
-            result = dict_types[v](request_data[k])
-            list_results[k] = result
-            if result == None:
-                errors.append("El parametro "+str(k)+" "+str(errors_types[v]))
-        return list_results,errors
-
-
 
 
 
