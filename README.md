@@ -26,11 +26,11 @@ Framework para endpoint Api : Flask
 
 **/verify** [POST]-> Verificar token
 
-**/new_user** [POST]-> Crear usuario: nesecita token | Parametros: user = 'nombre usuario' , pass = 'password de usuario'
+**/new_user** [POST]-> Crear usuario: **nesecita token** | Parametros: user = 'nombre usuario' , pass = 'password de usuario'
 
-**/transcode** [POST]-> Enviar ruta de archivo mp3 para generar el analisis de sentimientos y las palabras a buscar en este archivo| Parametros: route = ruta absoluta de el archivo mp3 a analisar , words = lista de palabras a buscar separadas por coma
+**/transcode** [POST]-> **nesecita token** Enviar ruta de archivo mp3 para generar el analisis de sentimientos y las palabras a buscar en este archivo| Parametros: route = ruta absoluta de el archivo mp3 a analisar , words = lista de palabras a buscar separadas por coma
 
-**/history** [GET]-> Traer el historial de analisis realizados
+**/history** [GET]-> Traer el historial de analisis realizados **nesecita token**
 
 
 
