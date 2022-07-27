@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import Flask, request
 from generate_token import TokenGen
 from data import Data
@@ -49,6 +50,8 @@ def verify_token(fun):
         except Exception as e:
             resp = "Error en el servidor"
             return generate_response(resp,500)
+
+
     return verifing
 
 
@@ -111,12 +114,22 @@ def verify(user):
 
 
 @app.route('/transcode',methods=['POST'])
-def transcode():
+@verify_token
+def transcode(user):
     request_data = request.args.to_dict()
-    
+    words = request_data['words']
     route = request_data['route']
-    ut.read_mp3(route)
-    return generate_response("Yes",200)
+    text_audio = ut.read_mp3(route,words)
+    print(text_audio)
+    data = {'mp3_file':route,'response':text_audio,"date":datetime.now()}
+    d.add_history(data)
+    return generate_response(text_audio,200)
+
+@app.route('/history',methods=['GET'])
+@verify_token
+def get_history(user):
+    history = d.get_history()
+    return history
 
 
 if __name__ == '__main__':

@@ -12,6 +12,7 @@ class Data(metaclass=Singleton):
         firebase_admin.initialize_app(self.cred)
         self.db = firestore.client()
         self.users_col = self.db.collection(u'users')
+        self.history_col = self.db.collection(u'history')
         self.da = DataAux()
 
 
@@ -50,10 +51,8 @@ class Data(metaclass=Singleton):
         return res
 
     def new_user(self,user,passd):
-        print("2222")
         user_old = self.get_user(user=user)
         result = None
-        print(user)
         if user_old != None:
             result = "Usuario "+str(user)+" ya existe"
         else:
@@ -68,3 +67,24 @@ class Data(metaclass=Singleton):
             })
             result = "Usuario "+str(user)+" creado"
         return result
+#___________________________________________________#
+#######_________________HISTORY_________________#####
+#___________________________________________________#
+    def add_history(self,data):
+        docs = list(self.history_col.stream())
+        ids = int(len(docs))
+        new_id = ids +1
+        new_history = self.history_col.document(u''+str(new_id))
+        res = new_history.set({
+            u'data': data
+        })
+        print("History add")
+    
+    def get_history(self):
+        res_history = {}
+        docs = list(self.history_col.stream())
+        for doc in docs:
+            res_history[doc.id] = doc.to_dict()
+        print(res_history)
+        return res_history
+
