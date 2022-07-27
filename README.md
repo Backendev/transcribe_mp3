@@ -24,7 +24,7 @@ Framework para endpoint Api : Flask
 
 **/login** [POST]-> Logearse en la api para acceder al token y usar las rutas de la funcionalidad que solicitan autenticacion con token, se puede usar como prueba de acceso los parametros: user = user1,pass=pass1
 
-**/verify** [POST]-> Verificar token
+**/verify** [POST]-> Verificar token **nesecita token**
 
 **/new_user** [POST]-> Crear usuario: **nesecita token** | Parametros: user = 'nombre usuario' , pass = 'password de usuario'
 
