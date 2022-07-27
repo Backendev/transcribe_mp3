@@ -1,4 +1,4 @@
-# transcribe_mp3
+:fire: # transcribe_mp3: fire:
  
 
 **-Contexto**:clipboard:
@@ -29,5 +29,7 @@ Framework para endpoint Api : Flask
 **/transcode** [POST]-> Enviar ruta de archivo mp3 para generar el analisis de sentimientos y las palabras a buscar en este archivo| Parametros: route = ruta absoluta de el archivo mp3 a analisar , words = lista de palabras a buscar separadas por coma
 
 **/history** [GET]-> Traer el historial de analisis realizados
+
+
 
 
