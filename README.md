@@ -11,14 +11,14 @@ Proyecto para transcripcion y analisis de sentimientos de archivos mp3
 
 **-Se desarrolla la solución usando:**
 
-**Lenguaje:** Python 3.8.10
+**Lenguaje:** :snake: Python 3.8.10
 
 Framework para endpoint Api : Flask
 
 
-**Data Storage** Firebase
+**Data Storage :floppy_disk:** Firebase
 
-**Requests**
+**Requests :satellite:**
 
 **/** [POST]-> No nesecita Login solo para verificar disponibilidad de la API
 
